@@ -35,6 +35,7 @@ extension NetworkServiceProtocol {
             url,
             method: request.method,
             parameters: request.parameters,
+            encoding: request.method == .get ? URLEncoding.default : JSONEncoding.default,
             headers: request.headers
         )
         .validate()
