@@ -47,16 +47,8 @@ protocol TMDBServiceProtocol: NetworkServiceProtocol {
 }
 
 final class TMDBService: TMDBServiceProtocol {
-    let baseURL: URL = .init(string: "https://api.themoviedb.org/3")!
-    let decoder: any DataDecoder = {
-        let decoder = JSONDecoder()
-
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        decoder.dateDecodingStrategy = .formatted(dateFormatter)
-
-        return decoder
-    }()
+    let baseURL = TMDBConfig.baseURL
+    let decoder = TMDBConfig.decoder
 
     func fetchMovieList(of type: MovieListType, page: Int) -> AnyPublisher<MovieResponse, AFError> {
         perform(TMDBRequest.movieList(type: type, page: page))
