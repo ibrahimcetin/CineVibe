@@ -17,11 +17,29 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     ) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
-        let viewController = ViewController()
-        let navigationController = UINavigationController(rootViewController: viewController)
+        // Initialize services
+        let tmdbService = TMDBService()
+
+        // Initialize view model
+        let homeViewModel = HomeViewModel(tmdbService: tmdbService)
+
+        // Initialize home view controller
+        let homeViewController = HomeViewController(viewModel: homeViewModel)
+        homeViewController.tabBarItem = UITabBarItem(
+            title: "Home",
+            image: UIImage(systemName: "house"),
+            selectedImage: UIImage(systemName: "house.fill")
+        )
+
+        let navigationController = UINavigationController(rootViewController: homeViewController)
+        navigationController.navigationBar.prefersLargeTitles = true
+
+        // Initialize tab bar controller
+        let tabBarController = UITabBarController()
+        tabBarController.viewControllers = [navigationController]
 
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = navigationController
+        window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
     }
 
