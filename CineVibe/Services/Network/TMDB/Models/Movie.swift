@@ -17,7 +17,7 @@ struct Movie: Codable, Identifiable, Hashable {
     let overview: String
     let popularity: Double
     let posterPath: String?
-    let releaseDate: Date
+    let releaseDate: String
     let title: String
     let video: Bool
     let voteAverage: Double
@@ -67,12 +67,22 @@ extension Movie {
     }
 
     var releaseDateFormatted: String {
-        Movie.dateFormatter.string(from: releaseDate)
+        if let date = Movie.decodeDateFormatter.date(from: releaseDate) {
+            Movie.dateFormatter.string(from: date)
+        } else {
+            releaseDate
+        }
     }
 
     private static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
+        return formatter
+    }()
+
+    private static let decodeDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
         return formatter
     }()
 }
@@ -95,7 +105,7 @@ extension Movie {
             """,
             popularity: 6024.555,
             posterPath: "/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg",
-            releaseDate: Date(timeIntervalSince1970: 1_639_526_400), // 2021-12-15
+            releaseDate: "2021-12-15",
             title: "Spider-Man: No Way Home",
             video: false,
             voteAverage: 8.2,
@@ -114,7 +124,7 @@ extension Movie {
             """,
             popularity: 4024.555,
             posterPath: "/74xTEgt7R36Fpooo50r9T25onhq.jpg",
-            releaseDate: Date(timeIntervalSince1970: 1_646_092_800), // 2022-03-01
+            releaseDate: "2022-03-01",
             title: "The Batman",
             video: false,
             voteAverage: 7.8,
@@ -133,7 +143,7 @@ extension Movie {
             """,
             popularity: 3024.555,
             posterPath: "/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg",
-            releaseDate: Date(timeIntervalSince1970: 1_524_614_400), // 2018-04-25
+            releaseDate: "2018-04-25",
             title: "Avengers: Infinity War",
             video: false,
             voteAverage: 8.3,

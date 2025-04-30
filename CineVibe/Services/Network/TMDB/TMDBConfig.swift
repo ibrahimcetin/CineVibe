@@ -11,15 +11,7 @@ import Foundation
 enum TMDBConfig {
     static let baseURL = URL(string: "https://api.themoviedb.org/3")!
 
-    static let decoder: any DataDecoder = {
-        let decoder = JSONDecoder()
-
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        decoder.dateDecodingStrategy = .formatted(dateFormatter)
-
-        return decoder
-    }()
+    static let decoder: any DataDecoder = JSONDecoder()
 
     static let defaultHeaders: HTTPHeaders = [
         .accept("application/json"),
