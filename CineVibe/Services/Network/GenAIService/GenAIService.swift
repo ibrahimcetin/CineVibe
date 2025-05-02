@@ -52,6 +52,7 @@ enum GenAIRequest: NetworkRequest {
 
 protocol GenAIServiceProtocol: NetworkServiceProtocol {
     func generate(prompt: String, model: String, system: String) -> AnyPublisher<OpenAIResponse, AFError>
+    func movieRecommendation(for vibe: String) -> AnyPublisher<String, AFError>
 }
 
 final class GenAIService: GenAIServiceProtocol {
