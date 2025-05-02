@@ -37,11 +37,7 @@ final class HomeViewModel {
         // Fetch now playing movies
         tmdbService.fetchMovieList(of: .nowPlaying, page: 1)
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] completion in
-                if case let .failure(error) = completion {
-                    self?.error = error
-                }
-            } receiveValue: { [weak self] response in
+            .sink(receiveCompletion: handleCompletion) { [weak self] response in
                 self?.nowPlayingMovies = response.results
             }
             .store(in: &cancellables)
@@ -49,11 +45,7 @@ final class HomeViewModel {
         // Fetch popular movies
         tmdbService.fetchMovieList(of: .popular, page: 1)
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] completion in
-                if case let .failure(error) = completion {
-                    self?.error = error
-                }
-            } receiveValue: { [weak self] response in
+            .sink(receiveCompletion: handleCompletion) { [weak self] response in
                 self?.popularMovies = response.results
             }
             .store(in: &cancellables)
@@ -61,11 +53,7 @@ final class HomeViewModel {
         // Fetch top rated movies
         tmdbService.fetchMovieList(of: .topRated, page: 1)
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] completion in
-                if case let .failure(error) = completion {
-                    self?.error = error
-                }
-            } receiveValue: { [weak self] response in
+            .sink(receiveCompletion: handleCompletion) { [weak self] response in
                 self?.topRatedMovies = response.results
             }
             .store(in: &cancellables)
@@ -73,13 +61,15 @@ final class HomeViewModel {
         // Fetch upcoming movies
         tmdbService.fetchMovieList(of: .upcoming, page: 1)
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] completion in
-                if case let .failure(error) = completion {
-                    self?.error = error
-                }
-            } receiveValue: { [weak self] response in
+            .sink(receiveCompletion: handleCompletion) { [weak self] response in
                 self?.upcomingMovies = response.results
             }
             .store(in: &cancellables)
+    }
+
+    private func handleCompletion(_ completion: Subscribers.Completion<some Any>) {
+        if case let .failure(error) = completion {
+            self.error = error
+        }
     }
 }
