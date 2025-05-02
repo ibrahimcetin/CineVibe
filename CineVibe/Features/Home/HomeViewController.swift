@@ -39,11 +39,24 @@ final class HomeViewController: UIViewController {
 
     private var dataSource: UICollectionViewDiffableDataSource<Section, Movie>!
 
-    enum Section: String, CaseIterable {
-        case popular = "Popular Movies"
-        case nowPlaying = "Now Playing Movies"
-        case topRated = "Top Rated Movies"
-        case upcoming = "Upcoming Movies"
+    enum Section: CaseIterable {
+        case popular
+        case nowPlaying
+        case topRated
+        case upcoming
+
+        var rawValue: String {
+            switch self {
+            case .popular:
+                NSLocalizedString("section.popular", comment: "Popular Movies section title")
+            case .nowPlaying:
+                NSLocalizedString("section.nowPlaying", comment: "Now Playing Movies section title")
+            case .topRated:
+                NSLocalizedString("section.topRated", comment: "Top Rated Movies section title")
+            case .upcoming:
+                NSLocalizedString("section.upcoming", comment: "Upcoming Movies section title")
+            }
+        }
     }
 
     // MARK: - Initialization
@@ -72,7 +85,7 @@ final class HomeViewController: UIViewController {
 
     private func setupUI() {
         navigationItem.title = "CineVibe"
-        tabBarItem.title = "Home"
+        tabBarItem.title = NSLocalizedString("tab.home", comment: "Home tab title")
 
         view.backgroundColor = .systemBackground
 
@@ -246,12 +259,9 @@ final class HomeViewController: UIViewController {
                     snapshot.appendSections([section])
                 }
 
-                // Delete old items and append new ones
-                let oldItems = snapshot.itemIdentifiers(inSection: section)
-                snapshot.deleteItems(oldItems)
                 snapshot.appendItems(movies, toSection: section)
 
-                dataSource.apply(snapshot, animatingDifferences: true)
+                dataSource.apply(snapshot, animatingDifferences: false)
             }
             .store(in: &cancellables)
 
@@ -269,7 +279,7 @@ final class HomeViewController: UIViewController {
 
     private func showError(_ error: Error) {
         let alert = UIAlertController(
-            title: "Error",
+            title: NSLocalizedString("error.alert.title", comment: "Title for error alert"),
             message: error.localizedDescription,
             preferredStyle: .alert
         )
