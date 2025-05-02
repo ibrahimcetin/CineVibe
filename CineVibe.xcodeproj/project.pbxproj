@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F0D9C1F2DC510B40029102E /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 0F0D9C1E2DC510B40029102E /* Localizable.xcstrings */; };
 		0FEECE2B2DBCB75500B45F71 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0FEECE2A2DBCB75500B45F71 /* Alamofire */; };
 		0FEECE2E2DBCB75E00B45F71 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0FEECE2D2DBCB75E00B45F71 /* SnapKit */; };
 		0FEECE312DBCB76900B45F71 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0FEECE302DBCB76900B45F71 /* Kingfisher */; };
@@ -25,6 +26,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F0D9C1E2DC510B40029102E /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		0FC6A7392DBE24A900F394FC /* CineVibeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CineVibeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FEECDFB2DBCAE5E00B45F71 /* CineVibe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CineVibe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FEECE362DBCBAFC00B45F71 /* .swiftformat */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftformat; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 		0FEECDF22DBCAE5E00B45F71 = {
 			isa = PBXGroup;
 			children = (
+				0F0D9C1E2DC510B40029102E /* Localizable.xcstrings */,
 				0FEECE382DBCBD6F00B45F71 /* .gitignore */,
 				0FEECE362DBCBAFC00B45F71 /* .swiftformat */,
 				0FEECDFD2DBCAE5E00B45F71 /* CineVibe */,
@@ -175,6 +178,7 @@
 			knownRegions = (
 				en,
 				Base,
+				tr,
 			);
 			mainGroup = 0FEECDF22DBCAE5E00B45F71;
 			minimizedProjectReferenceProxies = 1;
@@ -208,6 +212,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0FEECE372DBCBB0200B45F71 /* .swiftformat in Resources */,
+				0F0D9C1F2DC510B40029102E /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +346,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -395,6 +401,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -404,6 +411,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -451,6 +459,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

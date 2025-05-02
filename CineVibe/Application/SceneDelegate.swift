@@ -19,9 +19,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Initialize services
         let tmdbService = TMDBService()
+        let genAIService = GenAIService()
 
         // Initialize view model
         let homeViewModel = HomeViewModel(tmdbService: tmdbService)
+        let searchViewModel = SearchViewModel(tmdbService: tmdbService, genAIService: genAIService)
 
         // Initialize home view controller
         let homeViewController = HomeViewController(viewModel: homeViewModel)
@@ -31,12 +33,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             selectedImage: UIImage(systemName: "house.fill")
         )
 
-        let navigationController = UINavigationController(rootViewController: homeViewController)
-        navigationController.navigationBar.prefersLargeTitles = true
+        let homeNavigationController = UINavigationController(rootViewController: homeViewController)
+        homeNavigationController.navigationBar.prefersLargeTitles = true
+
+        // Initialize search view controller
+        let searchViewController = SearchViewController(viewModel: searchViewModel)
+        searchViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 2)
+
+        let searchNavigationController = UINavigationController(rootViewController: searchViewController)
+        searchNavigationController.navigationBar.prefersLargeTitles = true
 
         // Initialize tab bar controller
         let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [navigationController]
+        tabBarController.viewControllers = [homeNavigationController, searchNavigationController]
 
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = tabBarController
