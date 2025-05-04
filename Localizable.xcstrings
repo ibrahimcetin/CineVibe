@@ -24,13 +24,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Describe your vibe"
+            "value" : "Describe your vibe or a movie scene"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hislerini tarif et"
+            "value" : "Hislerini ya da bir film sahnesini tarif et"
           }
         }
       }
