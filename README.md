@@ -2,6 +2,10 @@
 
 CineVibe is a movie discovery app that combines traditional movie browsing with AI-powered recommendations. It allows users to find movies either by standard search or by describing their "vibe" or a movie scene to get personalized recommendations.
 
+<div align="center">
+  <video width="400" src="https://github.com/user-attachments/assets/c9ad1dfa-0f67-46f5-98d2-ef4b0bca4517" controls></video>
+</div>
+
 ## Features
 
 - **Home Screen**: Browse movies by categories (Popular, Top Rated, Now Playing, Upcoming)
