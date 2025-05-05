@@ -63,7 +63,12 @@ final class SearchViewModel {
                     case let .standard(movies):
                         searchResult.send(.standard(movies + foundMovies))
                     case .genAI:
-                        searchResult.send(.genAI(foundMovies))
+                        // Only use the first search result for GenAI recommendations
+                        let movies: [Movie] = if let movie = foundMovies.first {
+                            [movie]
+                        } else { [] }
+
+                        searchResult.send(.genAI(movies))
                     }
                 }
             }
